@@ -1,81 +1,83 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Technical Issue Notification</title>
-    <style>
-        body {
-            background-color: #25D366; /* WhatsApp theme color */
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 20px;
-        }
-        .text-box {
-            background-color: #ffffff;
-            border-radius: 10px;
-            padding: 20px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
-            margin: 20px 0;
-        }
-        .heading {
-            background-color: #000;
-            color: white;
-            padding: 10px;
-            border-radius: 5px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
-            text-align: center;
-            font-size: 24px;
-        }
-        .paragraph {
-            margin-top: 10px;
-            line-height: 1.6;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            padding: 10px;
-            border-radius: 5px;
-        }
-        .note {
-            background-color: #f8f9fa;
-            border-left: 6px solid #007bff;
-            padding: 10px;
-            margin-top: 15px;
-            font-weight: bold;
-        }
-        .whatsapp-button {
-            display: inline-block;
-            background-color: #25D366;
-            color: white;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 5px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-            text-decoration: none;
-            font-size: 18px;
-            margin-top: 20px;
-            cursor: pointer;
-            transition: transform 0.2s;
-        }
-        .whatsapp-button:hover {
-            transform: scale(1.05);
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
 </head>
 <body>
-Abhi
-<div class="text-box">
-    <div class="heading">Technical Issue <br>( तकनीकी समस्या )</div>
-    <div class="paragraph">
-        We Are Facing a Technical Issues On Our Page So we Are Changing Something In Our Application 'Education By Abhi'.<br>
-        Join Us on Whatsapp And Update Our New Application.<br>
-        हमारे एप्प में कोई तकीनीकी समस्या आने की वजह से हम हमारे एप्प में कुछ चेंज कर रहे है।<br>
-        इसके लिए आप हमें 'Whatsapp' पर जॉइन कर ले। व्हाट्सएप पर आपको एप्प से सम्बंधित सभी अपडेट की जानकारी मिल जाएगी जिससे आपको एप्प का उपयोग करने में कोई समस्या नहीं होगी।<br>
-        <div class="note">
-            Note:- व्हाट्सएप Groups में जुड़े हुए लोग एक दूसरे के मोबाइल नंबर देख सकते है। लेकिन व्हाट्सएप चैनल में कोई भी व्यक्ति किसी भी दूसरे व्यक्ति की कोई जानकारी नही देख सकता है।<br>
-            यहाँ व्हाट्सएप चैनल की लिंक दी गयी है जिसको आप बिना किसी संकोच के जॉइन कर सकते हो। ओर आपकी जानकारी किसी भी दूसरे व्यक्ति के पास नही जाएगी।
-        </div>
-    </div>
-    <a href="https://chat.whatsapp.com/C634vDTjDFO4z8xWxkbE9b" class="whatsapp-button" target="_blank">Join on WhatsApp</a>
+
+<div class="footer">
+  <a href="motivation.html" class="footer-item">
+    <img src="motivation.jpg" alt="Motivation" class="footer-icon">
+  </a>
+  <a href="study.html" class="footer-item">
+    <img src="study.jpg" alt="Study" class="footer-icon">
+  </a>
+  <a href="index.html" class="footer-item footer-home">
+    <img src="home.jpg" alt="Home" class="footer-icon footer-home-icon">
+  </a>
+  <a href="contact.html" class="footer-item">
+    <img src="contact.jpg" alt="Contact" class="footer-icon">
+  </a>
+  <a href="privacy.html" class="footer-item">
+    <img src="privacy.jpg" alt="Privacy" class="footer-icon">
+  </a>
 </div>
 
+<style>
+
+  .footer {
+    background-color: #333;
+    padding: 10px;
+    text-align: center;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    
+  }
+  
+  .footer-item {
+    display: inline-block;
+    margin: 0 10px;
+  }
+  
+  .footer-icon {
+    width: 35px;
+    height: 30px;
+    border-radius: 50%;
+    border: 2px solid #DE66D4;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+  }
+  
+  .footer-home-icon {
+    width: 40px;
+    height: 40px;
+    border: 2px solid #68ECFF;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 2);
+  }
+  
+  .footer-home:active {
+    animation: glow 0.5s ease;
+  }
+  
+  @keyframes glow {
+    0% {
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+    }
+  
+    50% {
+      box-shadow: 0 0 40px rgba(0, 255, 0, 0.8);
+    }
+  
+    100% {
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+    }
+  }
+</style>
+  
 </body>
 </html>
