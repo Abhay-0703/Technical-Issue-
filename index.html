@@ -1,83 +1,196 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Document</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Education By Abhi</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(to bottom right, #c8e4c5, #91c3f2);
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            font-family: 'Cursive', sans-serif;
+        }
+
+        h1 {
+            position: absolute;
+            top: 20px;
+            width: 100%;
+            text-align: center;
+            font-size: 3rem;
+            font-family: 'Lucida Handwriting', Cursive;
+            color: #ff8000;
+            text-shadow: 1px 1px 2px #000;
+        }
+
+        .box {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #000;
+        }
+
+        .box img {
+            width: 100%;
+            height: 100%;
+            border-radius: 15px;
+            object-fit: cover;
+        }
+
+        .box1 {
+            top: 120px;
+            left: 50px;
+        }
+
+        .box2 {
+            top: 230px;
+            right: 50px;
+        }
+
+        .box3 {
+            top: 340px;
+            left: 50px;
+        }
+
+        .box4 {
+            top: 450px;
+            right: 50px;
+        }
+
+        footer {
+            position: absolute;
+            bottom: 20px;
+            width: 100%;
+            text-align: center;
+            font-size: 1.2rem;
+        }
+
+        footer a {
+            color: #000;
+            text-decoration: none;
+            background-color: #ff8000;
+            padding: 10px 20px;
+            border-radius: 20px;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
+
+        footer a:hover {
+            background-color: #ff9900;
+        }
+    </style>
 </head>
 <body>
 
-<div class="footer">
-  <a href="motivation.html" class="footer-item">
-    <img src="motivation.jpg" alt="Motivation" class="footer-icon">
-  </a>
-  <a href="study.html" class="footer-item">
-    <img src="study.jpg" alt="Study" class="footer-icon">
-  </a>
-  <a href="index.html" class="footer-item footer-home">
-    <img src="home.jpg" alt="Home" class="footer-icon footer-home-icon">
-  </a>
-  <a href="contact.html" class="footer-item">
-    <img src="contact.jpg" alt="Contact" class="footer-icon">
-  </a>
-  <a href="privacy.html" class="footer-item">
-    <img src="privacy.jpg" alt="Privacy" class="footer-icon">
-  </a>
-</div>
+    <h1>Education By Abhí</h1>
 
-<style>
+    <!-- Box 1 (Study) -->
+    <div class="box box1">
+        <a href="study.html">
+            <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgjzbgl0bh18gqYrIExMUrDbDhTDqcHO2JRwgy845ZpzU86AMsvXvphqgo42joYkhrrpKKYdQPF5WQ7Nwmd5vgyEuw_D6shaC4oRO1P7ivOQVbPZtQtQ7BeW1r7mF5W82x12k9xJMXnJtIOG2OiEJiuQKoprdqCCOo96wZNlghaTa7eTmJuye7BOFDODwM/s648/English_20240928_151925_0001.gif" alt="Study">
+        </a>
+    </div>
 
-  .footer {
-    background-color: #333;
-    padding: 10px;
-    text-align: center;
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    
-  }
-  
-  .footer-item {
-    display: inline-block;
-    margin: 0 10px;
-  }
-  
-  .footer-icon {
-    width: 35px;
-    height: 30px;
-    border-radius: 50%;
-    border: 2px solid #DE66D4;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-    transition: all 0.3s ease;
-  }
-  
-  .footer-home-icon {
-    width: 40px;
-    height: 40px;
-    border: 2px solid #68ECFF;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 2);
-  }
-  
-  .footer-home:active {
-    animation: glow 0.5s ease;
-  }
-  
-  @keyframes glow {
-    0% {
-      box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
-    }
-  
-    50% {
-      box-shadow: 0 0 40px rgba(0, 255, 0, 0.8);
-    }
-  
-    100% {
-      box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
-    }
-  }
-</style>
-  
+    <!-- Box 2 (Motivation) -->
+    <div class="box box2">
+        <a href="motivation.html">
+            <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiLSenIIgcoS_nNoP8wXM8mIWaNiwnOuua8M7lWgUu8eUN5KJysb4-cw8SwS1cxtuSn7jowK3JLZ7rNuMlR7gGQAUhtrWmXC1OkxESnE2loI3Qkxuy6wgX9EYlNnm_i5rj19RPdjBkEe7LABDHiI0mYZWyWatjA69pZLsI95h-xbMgpUsUPpH36ymTt0Sw/s648/English_20240928_151937_0002.gif" alt="Motivation">
+        </a>
+    </div>
+
+    <!-- Box 3 (Contact Us) -->
+    <div class="box box3">
+        <a href="contact.html">
+            <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEisffFBSO22lozDn4LO4ncKuVIHoSo7hixd_sUwpxVWFCoYIO01uWDFNFac6TXDTrrGQWRPDW4subUSz4sb7O5li5M4wa0VaEwcbApFiEwknfKGQVnOS-c3P4qxGh_OXEt0jmo2jBI-GBPsmL7pIZtXBNz6t9R0PTkKDXWo6y8tk4hl-CpPagVnuxQzFkI/s648/English_20240928_151950_0003.gif" alt="Contact Us">
+        </a>
+    </div>
+
+    <!-- Box 4 (Privacy Policy) -->
+    <div class="box box4">
+        <a href="privacy.html">
+            <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjYKOu1grpGFcjuUwy03HF4KrpAJa0UDhjk-azwsXGg8PwSHcAKDTptHqbYPX-mBapRpE8HgIQRqHL6nsL5gqpNkQOMbeHBCCLW6Fex7lP7Qm7AvP0kYnIVtdbDl3Ylbg01CQ3vYDBGBv5BEaEb87oGcmi-B3oGzp2payd2MuQgYTlMaL_e7nsO6og2V1Q/s648/English_20240928_151959_0004.gif" alt="Privacy Policy">
+        </a>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <a href="https://wa.me/+918055130976">© Abhishek Kulhari</a>
+    </footer>
+
 </body>
+<script>
+    // Function to cache images and content into local storage
+    function cacheResources() {
+        // Check if local storage is available
+        if (typeof(Storage) !== "undefined") {
+
+            // Cache image URLs in local storage
+            const images = {
+                'study': 'https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgjzbgl0bh18gqYrIExMUrDbDhTDqcHO2JRwgy845ZpzU86AMsvXvphqgo42joYkhrrpKKYdQPF5WQ7Nwmd5vgyEuw_D6shaC4oRO1P7ivOQVbPZtQtQ7BeW1r7mF5W82x12k9xJMXnJtIOG2OiEJiuQKoprdqCCOo96wZNlghaTa7eTmJuye7BOFDODwM/s648/English_20240928_151925_0001.gif',
+                'motivation': 'https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiLSenIIgcoS_nNoP8wXM8mIWaNiwnOuua8M7lWgUu8eUN5KJysb4-cw8SwS1cxtuSn7jowK3JLZ7rNuMlR7gGQAUhtrWmXC1OkxESnE2loI3Qkxuy6wgX9EYlNnm_i5rj19RPdjBkEe7LABDHiI0mYZWyWatjA69pZLsI95h-xbMgpUsUPpH36ymTt0Sw/s648/English_20240928_151937_0002.gif',
+                'contact': 'https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEisffFBSO22lozDn4LO4ncKuVIHoSo7hixd_sUwpxVWFCoYIO01uWDFNFac6TXDTrrGQWRPDW4subUSz4sb7O5li5M4wa0VaEwcbApFiEwknfKGQVnOS-c3P4qxGh_OXEt0jmo2jBI-GBPsmL7pIZtXBNz6t9R0PTkKDXWo6y8tk4hl-CpPagVnuxQzFkI/s648/English_20240928_151950_0003.gif',
+                'privacy': 'https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiLSenIIgcoS_nNoP8wXM8mIWaNiwnOuua8M7lWgUu8eUN5KJysb4-cw8SwS1cxtuSn7jowK3JLZ7rNuMlR7gGQAUhtrWmXC1OkxESnE2loI3Qkxuy6wgX9EYlNnm_i5rj19RPdjBkEe7LABDHiI0mYZWyWatjA69pZLsI95h-xbMgpUsUPpH36ymTt0Sw/s648/English_20240928_151937_0002.gif'
+            };
+
+            // Store each image in local storage
+            for (const key in images) {
+                if (!localStorage.getItem(key)) {
+                    localStorage.setItem(key, images[key]);
+                }
+            }
+
+            // Optional: cache other important text or data
+            if (!localStorage.getItem('headerText')) {
+                localStorage.setItem('headerText', 'Education By Abhi');
+            }
+
+            console.log('Resources cached into local storage!');
+        } else {
+            console.log('Local storage not supported in this browser.');
+        }
+    }
+
+    // Function to load cached images/content from local storage
+    function loadFromCache() {
+        if (typeof(Storage) !== "undefined") {
+            const studyImage = localStorage.getItem('study');
+            const motivationImage = localStorage.getItem('motivation');
+            const contactImage = localStorage.getItem('contact');
+            const privacyImage = localStorage.getItem('privacy');
+
+            // Update images if available in local storage
+            if (studyImage) document.querySelector('.box1 img').src = studyImage;
+            if (motivationImage) document.querySelector('.box2 img').src = motivationImage;
+            if (contactImage) document.querySelector('.box3 img').src = contactImage;
+            if (privacyImage) document.querySelector('.box4 img').src = privacyImage;
+
+            // Update header text from local storage
+            const headerText = localStorage.getItem('headerText');
+            if (headerText) document.querySelector('h1').innerText = headerText;
+
+            console.log('Resources loaded from local storage!');
+        }
+    }
+
+    // Run caching when the page is loaded for the first time
+    window.onload = function() {
+        loadFromCache(); // Load cached resources if available
+        cacheResources(); // Cache resources for future use
+    };
+</script>
+
 </html>
