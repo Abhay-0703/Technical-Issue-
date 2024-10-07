@@ -3,134 +3,138 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Education By Abhi</title>
+    <title>Hindi to English Translation</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
         body {
-            background: linear-gradient(to bottom right, #c8e4c5, #91c3f2);
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            position: relative;
-            font-family: 'Cursive', sans-serif;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f4;
+            color: #333;
         }
-
-        h1 {
-            position: absolute;
-            top: 20px;
+        table {
             width: 100%;
-            text-align: center;
-            font-size: 3rem;
-            font-family: 'Lucida Handwriting', Cursive;
-            color: #ff8000;
-            text-shadow: 1px 1px 2px #000;
+            border-collapse: collapse;
+            margin-bottom: 20px;
         }
-
-        .box {
-            position: absolute;
-            width: 120px;
-            height: 120px;
-            border-radius: 15px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            display: flex;
-            justify-content: center;
-            align-items: center;
+        th, td {
+            padding: 10px;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        .hidden {
+            display: none;
+        }
+        .translate-btn, .mic-btn {
+            padding: 5px 10px;
+            cursor: pointer;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
+        .mic-btn {
             background-color: transparent;
+            color: #28a745;
+            font-size: 20px; /* Adjust icon size */
         }
-
-        .box img {
-            width: 100%;
-            height: 100%;
-            border-radius: 15px;
-            object-fit: cover;
-        }
-
-        .box1 {
-            top: 120px;
-            left: 50px;
-        }
-
-        .box2 {
-            top: 230px;
-            right: 50px;
-        }
-
-        .box3 {
-            top: 340px;
-            left: 50px;
-        }
-
-        .box4 {
-            top: 450px;
-            right: 50px;
-        }
-
-        footer {
-            position: fixed;
-            bottom: 20px;
-            width: 100%;
-            text-align: center;
-            font-size: 1.2rem;
-        }
-
-        footer a {
-            color: #000;
-            text-decoration: none;
-            background-color: #ff8000;
-            padding: 10px 20px;
-            border-radius: 20px;
-            font-weight: bold;
-            transition: background-color 0.3s ease;
-        }
-
-        footer a:hover {
-            background-color: #ff9900;
+        @media (max-width: 600px) {
+            th, td {
+                font-size: 14px; /* Adjust font size for mobile */
+            }
         }
     </style>
 </head>
 <body>
 
-    <h1>Education By Abhí</h1>
+<table>
+    <thead>
+        <tr>
+            <th>Hindi Sentence</th>
+            <th>Translation</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>मैं खाना खा रहा हूँ।</td>
+            <td>
+                <button class="translate-btn" onclick="showTranslation(0, 'I am eating food.')">Translation</button>
+                <span id="translation-0" class="hidden">I am eating food. <button class="mic-btn" onclick="speakTranslation('I am eating food.')">🔉</button></span>
+            </td>
+        </tr>
+        <tr>
+            <td>वह स्कूल जा रहा है।</td>
+            <td>
+                <button class="translate-btn" onclick="showTranslation(1, 'He is going to school.')">Translation</button>
+                <span id="translation-1" class="hidden">He is going to school. <button class="mic-btn" onclick="speakTranslation('He is going to school.')">🔉</button></span>
+            </td>
+        </tr>
+        <tr>
+            <td>तुम क्या कर रहे हो?</td>
+            <td>
+                <button class="translate-btn" onclick="showTranslation(2, 'What are you doing?')">Translation</button>
+                <span id="translation-2" class="hidden">What are you doing? <button class="mic-btn" onclick="speakTranslation('What are you doing.')">🔉</button></span>
+            </td>
+        </tr>
+        <tr>
+            <td>हम क्रिकेट खेल रहे हैं।</td>
+            <td>
+                <button class="translate-btn" onclick="showTranslation(3, 'We are playing cricket.')">Translation</button>
+                <span id="translation-3" class="hidden">We are playing cricket. <button class="mic-btn" onclick="speakTranslation('We are playing cricket.')">🔉</button></span>
+            </td>
+        </tr>
+        <tr>
+            <td>बच्चे खेल रहे हैं।</td>
+            <td>
+                <button class="translate-btn" onclick="showTranslation(4, 'The children are playing.')">Translation</button>
+                <span id="translation-4" class="hidden">The children are playing. <button class="mic-btn" onclick="speakTranslation('The children are playing.')">🔉</button></span>
+            </td>
+        </tr>
+    </tbody>
+</table>
 
-    <!-- Box 1 (Study) -->
-    <div class="box box1">
-        <a href="study.html">
-            <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhqQwIgN3WdSFHjQDls7flpZYpq3b-sIfrhx2qlBmbxqt8QSomm_eCYhHDtMky13dWI_aIAxwrTFQ7Y_oXxNap8gfrdZypGWqoY2HxoJ6kkfQGb9NQFoeGRRBvSB07OS0nsOqP-EuTUUnunD_QU67ydPqCt_tToNvg18E3sVqY49Uu-ABOifZFo8r7y7qs/s1080/study.png" alt="Study">
-        </a>
-    </div>
+<script>
+function showTranslation(index, translation) {
+    // Hide all previous translations and buttons
+    const translations = document.querySelectorAll('span[id^="translation-"]');
+    const buttons = document.querySelectorAll('.translate-btn');
 
-    <!-- Box 2 (Motivation) -->
-    <div class="box box2">
-        <a href="motivation.html">
-            <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjtswOjTnA4H-UE12ZFt5zT9GQRyh6qHXJpLAApKRruObOEFvJknEAjxh9vVFHQU68bIKQJ0KgFzM6yvVi6bwrqpCHWAO3hYONwlegjs6rY0V5gGTP6fYUBoLEPmsZS3XCPG1MK7ygJITb2WmB3tEhm6NOehLsehIO2Sos4C5LGMt2BOdaTsaIAd9T2VSY/s1080/motivation.png" alt="Motivation">
-        </a>
-    </div>
+    translations.forEach((trans) => {
+        trans.classList.add('hidden');
+    });
 
-    <!-- Box 3 (Contact Us) -->
-    <div class="box box3">
-        <a href="contact.html">
-            <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgK6V3HaU8scrnnT6GZsND1yHcWs-ItPaoJIoR_-iIemsqTVno9O6LqQWwnZmB7euV3yeWtSWlSkP4xay8kAknmOZaO6GowAQ6UOoRBA69M0qMk41XNUzc2ohNAGiMGV9TDszbHzvCYf6YqrChiSAgUPP29p2htowGPKnKngmye_MPR6TcfkV-KXPbDdkM/s1080/contact.png" alt="Contact Us">
-        </a>
-    </div>
+    buttons.forEach((btn) => {
+        btn.style.display = 'inline-block';
+    });
 
-    <!-- Box 4 (Privacy Policy) -->
-    <div class="box box4">
-        <a href="privacy.html">
-            <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjKpETfVI4ote7ejMmrG6Q4XidKO-jv5lm20EwQcbJB5vFW31rzBrkoJeQnr9xlDbUz-OaTFlaG_xTiht4GqSs6cWcP5gdOverPKP-wbJJYxgHcBEfWdB9_GciVbvSvDhfhuboBR1uIvotFasMwbL-BrG4m9ocSKjGHH5XhA9DyGkYkXe40ZFslLZ32h9g/s1080/privacy.png" alt="Privacy Policy">
-        </a>
-    </div>
+    // Show current translation and hide the corresponding button
+    const translationElement = document.getElementById(`translation-${index}`);
+    translationElement.classList.remove('hidden');
 
-    <!-- Footer -->
-    <footer>
-        <a href="https://wa.me/+918055130976">© Abhishek Kulhari</a>
-    </footer>
+    // Hide the button for this translation
+    const currentButton = buttons[index];
+    currentButton.style.display = 'none';
+}
+
+function speakTranslation(text) {
+    const utterance = new SpeechSynthesisUtterance(text);
+    const voices = window.speechSynthesis.getVoices();
+    utterance.voice = voices.find(voice => voice.name.includes('Male')) || voices[0]; // Default to first voice if no male voice found
+    utterance.rate = 0.7; // Slow down the speech rate
+    window.speechSynthesis.speak(utterance);
+}
+
+// Load voices on window load
+window.onload = function() {
+    // Ensure voices are loaded
+    window.speechSynthesis.onvoiceschanged = function() {
+        window.speechSynthesis.getVoices();
+    };
+};
+</script>
 
 </body>
-
 </html>
