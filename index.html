@@ -3,196 +3,608 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hindi to English Translation</title>
+    <title>Anzaan School Education</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
     <style>
+        /* General Styles */
         body {
-            font-family: Arial, sans-serif;
             margin: 0;
-            padding: 20px;
-            background-color: #f4f4f4;
-            color: #333;
+            font-family: Arial, sans-serif;
+            background-color: #fff7f0;
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+            justify-content: space-between;
         }
-        table {
+        header {
+            padding: 10px;
+            border-bottom: 1px solid #ccc;
+        }
+        header img {
+            height: 50px;
+            width: 50px;
+            margin-right: 10px;
+        }
+        header h1 {
+            display: inline-block;
+            font-size: 24px;
+            font-weight: bold;
+        }
+        main {
+            flex-grow: 1;
+            padding: 10px;
+        }
+        .search-container {
+            margin-bottom: 20px;
+            position: relative;
+        }
+        .search-container input {
             width: 100%;
-            border-collapse: collapse;
+            padding: 10px 10px 10px 40px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #f0f0f0;
+            color: #555;
+        }
+        .search-container i {
+            position: absolute;
+            left: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #555;
+        }
+        h2 {
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+        }
+        .grid a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #fff;
+            text-decoration: none;
+            color: #000;
+            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        .grid img {
+            height: auto;
+            width: 24px;
+            margin-right: 10px;
+        }
+        footer {
+            background-color: #fff;
+            padding: 10px;
+            border-top: 1px solid #ccc;
+        }
+        footer .nav-links {
+            display: flex;
+            justify-content: space-around;
+        }
+        footer .nav-links a {
+            text-decoration: none;
+            text-align: center;
+            color: #555;
+        }
+        footer .nav-links i {
+            font-size: 18px;
+            display: block;
+        }
+        footer .nav-links .active {
+            color: #007bff;
+        }
+
+        /* Login System and Profile Styles */
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+        .form-container {
+            background: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            max-width: 400px;
+            width: 90%;
+        }
+        .form-container h2 {
+            text-align: center;
             margin-bottom: 20px;
         }
-        th, td {
+        .form-container input[type="text"],
+        .form-container input[type="password"],
+        .form-container input[type="file"],
+        .form-container select {
+            width: 100%;
             padding: 10px;
-            border: 1px solid #ddd;
-            text-align: left;
-        }
-        th {
-            background-color: #f2f2f2;
-        }
-        .hidden {
-            display: none;
-        }
-        .translate-btn, .mic-btn {
-            padding: 5px 10px;
-            cursor: pointer;
-            background-color: #28a745;
-            color: white;
-            border: none;
+            margin: 10px 0;
+            border: 1px solid #ccc;
             border-radius: 5px;
         }
-        .mic-btn {
-            background-color: transparent;
-            color: #28a745;
-            font-size: 20px; /* Adjust icon size */
+        .form-container .validation-hints {
+            font-size: 12px;
+            color: red;
         }
-        @media (max-width: 600px) {
-            th, td {
-                font-size: 14px; /* Adjust font size for mobile */
-            }
+        .form-container .validation-hints.green {
+            color: green;
+        }
+        .form-container .buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+        .form-container button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .btn-primary {
+            background-color: #007bff;
+            color: white;
+        }
+        .btn-secondary {
+            background-color: #6c757d;
+            color: white;
+        }
+        #profile-screen {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            height: 100%;
+            width: 300px;
+            background: #fff;
+            box-shadow: -4px 0 10px rgba(0, 0, 0, 0.2);
+            transition: right 0.3s ease;
+            padding: 20px;
+        }
+        #profile-screen img {
+            display: block;
+            margin: 0 auto;
+            border-radius: 50%;
+            width: 100px;
+            height: 100px;
+        }
+        #profile-screen h3 {
+            text-align: center;
+            margin: 10px 0;
+        }
+        #profile-screen .details {
+            margin-top: 20px;
+        }
+        #profile-screen .details span {
+            display: block;
+            margin: 5px 0;
+        }
+        #profile-screen .close-btn {
+            display: block;
+            text-align: right;
+            margin-bottom: 10px;
+            cursor: pointer;
+            color: #007bff;
         }
     </style>
 </head>
 <body>
-
-<table>
-    <thead>
-        <tr>
-            <th>Hindi Sentence</th>
-            <th>Translation</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>मैं खाना खा रहा हूँ।</td>
-            <td>
-                <button class="translate-btn" onclick="showTranslation(0, 'I am eating food.')">Translation</button>
-                <span id="translation-0" class="hidden">I am eating food. <button class="mic-btn" onclick="speakTranslation('I am eating food.')">🔉</button></span>
-            </td>
-        </tr>
-        <tr>
-            <td>वह स्कूल जा रहा है।</td>
-            <td>
-                <button class="translate-btn" onclick="showTranslation(1, 'He is going to school.')">Translation</button>
-                <span id="translation-1" class="hidden">He is going to school. <button class="mic-btn" onclick="speakTranslation('He is going to school.')">🔉</button></span>
-            </td>
-        </tr>
-        <tr>
-            <td>तुम क्या कर रहे हो?</td>
-            <td>
-                <button class="translate-btn" onclick="showTranslation(2, 'What are you doing?')">Translation</button>
-                <span id="translation-2" class="hidden">What are you doing? <button class="mic-btn" onclick="speakTranslation('What are you doing.')">🔉</button></span>
-            </td>
-        </tr>
-        <tr>
-            <td>हम क्रिकेट खेल रहे हैं।</td>
-            <td>
-                <button class="translate-btn" onclick="showTranslation(3, 'We are playing cricket.')">Translation</button>
-                <span id="translation-3" class="hidden">We are playing cricket. <button class="mic-btn" onclick="speakTranslation('We are playing cricket.')">🔉</button></span>
-            </td>
-        </tr>
-        <tr>
-            <td>बच्चे खेल रहे हैं।</td>
-            <td>
-                <button class="translate-btn" onclick="showTranslation(4, 'The children are playing.')">Translation</button>
-                <span id="translation-4" class="hidden">The children are playing. <button class="mic-btn" onclick="speakTranslation('The children are playing.')">🔉</button></span>
-            </td>
-        </tr>
-    </tbody>
-</table>
-
-<script>
-function showTranslation(index, translation) {
-    // Hide all previous translations and buttons
-    const translations = document.querySelectorAll('span[id^="translation-"]');
-    const buttons = document.querySelectorAll('.translate-btn');
-
-    translations.forEach((trans) => {
-        trans.classList.add('hidden');
-    });
-
-    buttons.forEach((btn) => {
-        btn.style.display = 'inline-block';
-    });
-
-    // Show current translation and hide the corresponding button
-    const translationElement = document.getElementById(`translation-${index}`);
-    translationElement.classList.remove('hidden');
-
-    // Hide the button for this translation
-    const currentButton = buttons[index];
-    currentButton.style.display = 'none';
-}
-
-function speakTranslation(text) {
-    const utterance = new SpeechSynthesisUtterance(text);
-    const voices = window.speechSynthesis.getVoices();
-    utterance.voice = voices.find(voice => voice.name.includes('Male')) || voices[0]; // Default to first voice if no male voice found
-    utterance.rate = 0.7; // Slow down the speech rate
-    window.speechSynthesis.speak(utterance);
-}
-
-// Load voices on window load
-window.onload = function() {
-    // Ensure voices are loaded
-    window.speechSynthesis.onvoiceschanged = function() {
-        window.speechSynthesis.getVoices();
-    };
-};
-
-
-
+    <header>
+        <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgqdK75iqN-OA-fe7whPP8CH1G-J0K1Wu1sG12GX46ENiN5aOZ1sI6eITmGWvdXmURmXL1ZxUsH11lTQGaU6uHy1xa3dGwTqWpBS4jp_UHmdpLmVTB8spiWE1kTW86iWBupYHycgfxkvc_Ef-nEakOO_JZvzXtUOw_JDYnyuNYknSHDil1RY_F5SP3-_zOD/s3500/Logo%20name.jpg" alt="Anzaan Education logo" />
+        <h1>Anzaan School Education</h1>
+    </header>
+    <main>
+        <div class="search-container">
+            <input type="text" placeholder="Type title, author, or keyword" />
+            <i class="fas fa-search"></i>
+        </div>
+        <h2>I want to learn about</h2>
+        <div class="grid">
+            <a href="#">
+                <img src="https://placehold.co/24x24" alt="Self-Growth icon" />
+                <span>Self-Growth</span>
+            </a>
+            <a href="#">
+                <img src="https://placehold.co/24x24" alt="Business & Career icon" />
+                <span>Business & Career</span>
+            </a>
+            <a href="#">
+                <img src="https://placehold.co/24x24" alt="Happiness icon" />
+                <span>Happiness</span>
+            </a>
+            <a href="#">
+                <img src="https://placehold.co/24x24" alt="Money & Investment icon" />
+                <span>Money & Investment</span>
+            </a>
+        </div>
+    </main>
     
-</script>
+    <footer>
+    <div class="nav-links">
+        <a href="#">
+            <i class="fas fa-leaf"></i>
+            <span>For you</span>
+        </a>
+        <a href="#" class="active">
+            <i class="fas fa-search"></i>
+            <span>Explore</span>
+        </a>
+        <a href="#">
+            <i class="fas fa-bookmark"></i>
+            <span>Library</span>
+        </a>
+        <a href="#" id="profile-btn">
+            <i class="fas fa-user"></i>
+            <span>Profile</span>
+        </a>
+    </div>
+</footer>
+<div id="profile-section" class="profile-container hidden">
+    <div class="profile-content">
+        <div id="profile-image"></div>
+        <h3 id="profile-name"></h3>
+        <p id="profile-class"></p>
+        <hr>
+        <p>Total Days: <span id="profile-days"></span> 🔭</p>
+        <button id="close-profile" class="close-btn">Close</button>
+    </div>
+</div>
+<style>
+    .profile-container {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 300px;
+        height: 100%;
+        background: #f9f9f9;
+        box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
+        transition: right 0.3s ease-in-out;
+        z-index: 1000;
+    }
+
+    .profile-container.hidden {
+        display: none;
+    }
+
+    .profile-content {
+        padding: 20px;
+        text-align: center;
+    }
+
+    .profile-content img {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        object-fit: cover;
+        margin-bottom: 15px;
+    }
+
+    .profile-content h3 {
+        margin: 10px 0 5px;
+        font-size: 18px;
+        font-weight: bold;
+    }
+
+    .profile-content p {
+        margin: 5px 0;
+        font-size: 16px;
+        color: #555;
+    }
+
+    .profile-content hr {
+        margin: 15px 0;
+        border: 0;
+        border-top: 1px solid #ccc;
+    }
+
+    .close-btn {
+        padding: 10px 20px;
+        background: #007bff;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    .close-btn:hover {
+        background: #0056b3;
+    }
+</style>
+
 <script>
-    document.addEventListener("DOMContentLoaded", function() {
-        // Create the popup element
-        const popup = document.createElement("div");
-        popup.id = "checkpopup";
-        popup.style.position = "fixed";
-        popup.style.top = "50%";
-        popup.style.left = "50%";
-        popup.style.transform = "translate(-50%, -50%)";
-        popup.style.width = "80vw"; // Adjust width to 80% of viewport width
-        popup.style.height = "80vh"; // Adjust height to 80% of viewport height
-        popup.style.maxWidth = "800px"; // Set maximum width
-        popup.style.maxHeight = "600px"; // Set maximum height
-        popup.style.backgroundColor = "#fff";
-        popup.style.boxShadow = "0 4px 8px rgba(0, 0, 0, 0.2)";
-        popup.style.zIndex = "1000";
-        popup.style.padding = "20px";
-        popup.style.textAlign = "center";
+    const showProfileSection = () => {
+        const profileSection = document.getElementById("profile-section");
+        const userData = JSON.parse(localStorage.getItem("userData"));
+        const profileImageContainer = document.getElementById("profile-image");
+        const profileName = document.getElementById("profile-name");
+        const profileClass = document.getElementById("profile-class");
+        const profileDays = document.getElementById("profile-days");
 
-        // Add the iframe inside the popup
-        const iframe = document.createElement("iframe");
-        iframe.src = "https://anzaaneducationwelcome.blogspot.com/"; // Your desired URL
-        iframe.style.width = "100%";
-        iframe.style.height = "100%";
-        iframe.style.border = "none"; // Remove border for seamless look
-        popup.appendChild(iframe);
+        if (!userData) {
+            alert("Please create an account first.");
+            return;
+        }
 
-        // Add the timer display
-        const timerDisplay = document.createElement("div");
-        timerDisplay.style.position = "absolute";
-        timerDisplay.style.top = "10px";
-        timerDisplay.style.right = "10px";
-        timerDisplay.style.backgroundColor = "#000";
-        timerDisplay.style.color = "#fff";
-        timerDisplay.style.padding = "5px 10px";
-        timerDisplay.style.borderRadius = "5px";
-        timerDisplay.textContent = "10";
-        popup.appendChild(timerDisplay);
+        // Populate profile details
+        profileImageContainer.innerHTML = `<img src="${userData.profileImage}" alt="Profile Picture">`;
+        profileName.textContent = `${userData.fullName} (${userData.username})`;
+        profileClass.textContent = `Class: ${userData.userClass}`;
 
-        // Append the popup to the document body
-        document.body.appendChild(popup);
+        // Calculate total days since account creation
+        const accountCreatedDate = new Date(userData.accountCreated);
+        const today = new Date();
+        const totalDays = Math.floor((today - accountCreatedDate) / (1000 * 60 * 60 * 24));
+        profileDays.textContent = totalDays;
 
-        // Countdown timer logic
-        let timeLeft = 10;
-        const countdown = setInterval(() => {
-            timeLeft -= 1;
-            timerDisplay.textContent = timeLeft;
-            if (timeLeft <= 0) {
-                clearInterval(countdown);
-                popup.remove(); // Remove the popup after the timer ends
-            }
-        }, 1000);
-    });
+        // Show the profile section
+        profileSection.classList.remove("hidden");
+        profileSection.style.right = "0";
+    };
+
+    const hideProfileSection = () => {
+        const profileSection = document.getElementById("profile-section");
+        profileSection.style.right = "-100%";
+        setTimeout(() => profileSection.classList.add("hidden"), 300);
+    };
+
+    // Event listener for Profile button
+    document.getElementById("profile-btn").addEventListener("click", showProfileSection);
+
+    // Event listener for Close button
+    document.getElementById("close-profile").addEventListener("click", hideProfileSection);
 </script>
+    
 
+    <style>
+        
+        }
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+        .form-container {
+            background: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            width: 90%;
+            max-width: 400px;
+        }
+        .form-container h2 {
+            margin-bottom: 20px;
+            font-size: 24px;
+            color: #333;
+        }
+        .form-container input {
+            width: 90%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .btn-primary {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .btn-secondary {
+            background-color: #6c757d;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .validation-hints {
+            font-size: 12px;
+            color: red;
+            text-align: left;
+            padding-left: 5%;
+        }
+        .validation-hints.green {
+            color: green;
+        }
+        #image-preview img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+        }
+    </style>
+</head>
+<body>
+    <div id="app-content"></div>
+    <script>
+        const getStoredData = (key) => JSON.parse(localStorage.getItem(key)) || null;
+        const setStoredData = (key, data) => localStorage.setItem(key, JSON.stringify(data));
+        const removeStoredData = (key) => localStorage.removeItem(key);
+
+        const checkLoginPrompt = () => {
+            const lastLoginDate = getStoredData("lastLoginDate");
+            const currentDate = new Date().toDateString();
+
+            if (!lastLoginDate || lastLoginDate !== currentDate) {
+                setStoredData("lastLoginDate", currentDate);
+                showLoginSignupForm();
+            }
+        };
+
+        const showLoginSignupForm = () => {
+            const overlay = document.createElement("div");
+            overlay.className = "overlay";
+            overlay.innerHTML = `
+                <div class="form-container">
+                    <h2>स्वागत है</h2>
+                    <button class="btn-primary" id="create-account-btn">नया एकाउंट बनाये</button>
+                    <button class="btn-secondary" id="login-btn">पहले से एकाउंट है</button>
+                </div>
+            `;
+            document.body.appendChild(overlay);
+
+            document.getElementById("create-account-btn").addEventListener("click", showCreateAccountForm);
+            document.getElementById("login-btn").addEventListener("click", showLoginForm);
+        };
+
+        const showCreateAccountForm = () => {
+            const overlay = document.querySelector(".overlay");
+            overlay.innerHTML = `
+                <div class="form-container">
+                    <h2>नया एकाउंट बनाये</h2>
+                    <input type="text" id="full-name" placeholder="पूरा नाम" />
+                    <input type="text" id="username" placeholder="यूजर नेम" />
+                    <div class="validation-hints" id="username-hints">
+                        <div id="hint-min-5">कम से कम 5 अक्षर का यूजर Name बनाये</div>
+                        <div id="hint-3-alpha">कम से कम 3 अंग्रेजी के अक्षरों का उपयोग करें</div>
+                        <div id="hint-number">नम्बर का उपयोग करें</div>
+                    </div>
+                    <input type="text" id="class" placeholder="कक्षा दर्ज करें" />
+                    <input type="password" id="password" placeholder="पासवर्ड बनाये" />
+                    <input type="password" id="confirm-password" placeholder="पासवर्ड की पुष्टि करें" />
+                    <input type="file" id="profile-image" accept="image/*" />
+                    <div id="image-preview"></div>
+                    <button class="btn-primary" id="submit-account-btn" disabled>अकाउंट बनाएं</button>
+                    <button class="btn-secondary" id="cancel-create-btn">रद्द करें</button>
+                </div>
+            `;
+
+            const usernameInput = document.getElementById("username");
+            const confirmPasswordInput = document.getElementById("confirm-password");
+
+            usernameInput.addEventListener("input", validateUsername);
+            confirmPasswordInput.addEventListener("input", validatePasswords);
+
+            document.getElementById("profile-image").addEventListener("change", previewImage);
+            document.getElementById("submit-account-btn").addEventListener("click", createAccount);
+            document.getElementById("cancel-create-btn").addEventListener("click", () => {
+                document.body.removeChild(document.querySelector(".overlay"));
+            });
+        };
+
+        const validateUsername = () => {
+            const username = document.getElementById("username").value;
+            const hintMin5 = document.getElementById("hint-min-5");
+            const hint3Alpha = document.getElementById("hint-3-alpha");
+            const hintNumber = document.getElementById("hint-number");
+
+            const min5 = username.length >= 5;
+            const alphaCount = username.replace(/[^a-zA-Z]/g, "").length >= 3;
+            const hasNumber = /\d/.test(username);
+
+            hintMin5.className = min5 ? "validation-hints green" : "validation-hints";
+            hint3Alpha.className = alphaCount ? "validation-hints green" : "validation-hints";
+            hintNumber.className = hasNumber ? "validation-hints green" : "validation-hints";
+
+            toggleSubmitButton(min5 && alphaCount && hasNumber);
+        };
+
+        const validatePasswords = () => {
+            const password = document.getElementById("password").value;
+            const confirmPassword = document.getElementById("confirm-password").value;
+            toggleSubmitButton(password === confirmPassword && password.length > 0);
+        };
+
+        const toggleSubmitButton = (valid) => {
+            const submitButton = document.getElementById("submit-account-btn");
+            submitButton.disabled = !valid;
+        };
+
+        const previewImage = (event) => {
+            const imagePreview = document.getElementById("image-preview");
+            imagePreview.innerHTML = "";
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = () => {
+                    const img = document.createElement("img");
+                    img.src = reader.result;
+                    imagePreview.appendChild(img);
+                };
+                reader.readAsDataURL(file);
+            }
+        };
+
+        const createAccount = () => {
+            const fullName = document.getElementById("full-name").value;
+            const username = document.getElementById("username").value;
+            const userClass = document.getElementById("class").value;
+            const password = document.getElementById("password").value;
+            const profileImage = document.getElementById("profile-image").files[0];
+
+            const reader = new FileReader();
+            reader.onload = () => {
+                const userData = {
+                    fullName,
+                    username,
+                    userClass,
+                    password,
+                    profileImage: reader.result,
+                    accountCreated: new Date(),
+                };
+                setStoredData("userData", userData);
+                alert("Account created successfully!");
+                document.body.removeChild(document.querySelector(".overlay"));
+            };
+            reader.readAsDataURL(profileImage);
+        };
+
+        const showLoginForm = () => {
+            const overlay = document.querySelector(".overlay");
+            overlay.innerHTML = `
+                <div class="form-container">
+                    <h2>लॉग इन करें</h2>
+                    <input type="text" id="login-username" placeholder="यूजर नेम" />
+                    <input type="password" id="login-password" placeholder="पासवर्ड" />
+                    <button class="btn-primary" id="login-submit-btn">लॉग इन</button>
+                </div>
+            `;
+            document.getElementById("login-submit-btn").addEventListener("click", loginUser);
+        };
+
+        const loginUser = () => {
+            const username = document.getElementById("login-username").value;
+            const password = document.getElementById("login-password").value;
+            const userData = getStoredData("userData");
+
+            if (!userData) {
+                alert("Account not found. Please create an account.");
+                return;
+            }
+
+            if (userData.username === username && userData.password === password) {
+                alert("Welcome back, " + userData.fullName);
+                document.body.removeChild(document.querySelector(".overlay"));
+            } else {
+                alert("Incorrect details.");
+            }
+        };
+
+        checkLoginPrompt();
+    </script>
+</body>
+    
+    
 </body>
 </html>
